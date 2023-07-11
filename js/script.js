@@ -19,21 +19,21 @@ const OPERATORS = {
         precedence: 2,
         operation: (a, b) => a / b,
     },
+    '%': {
+        precedence:2,
+        operation: (a,b) => a/100*b, // процент от числа вроде бы, я хз как по другому )
+    },
     '^': {
-       
-        operation: (a) => Math.pow(a, b),
+       precedence:3,
+        operation: (a,b) => Math.pow(a, b),
     },
     '√': {
-        operation: (a ) => Math.sqrt(a),
+        precedence:3,
+        operation: (a ) => Math.pow(a,0.5),
     },
     '!': {
-        operation: (a) => a,
-    },
-    '%': {
-        operation: (a) => a,
-    },
-    '()':{
-     
+        precedence: 2,
+        operation: (a) => a === 0 ? 1 : a * OPERATORS['!'].operation(a - 1)
     },
 };
 
