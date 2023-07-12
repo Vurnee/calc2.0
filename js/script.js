@@ -71,16 +71,16 @@ const OPERATORS = {
                 }
                 else if (a < 0) {
                     throw new Error("Значения меньше нуля не допускаются");
-                }
-                else if (a > 170) {
-                    throw new Error("Значения больше 170 не допускается");
-                }
-                // else if (a = 'undefined') {
-                //     throw new Error("Ошибка");
-                // }
-                let i = 1;
-                while (a) {
-                    i *= a--;
+               }
+               else if (a > 170) {
+                   throw new Error("Значения больше 170 не допускается");
+               }
+               // else if (a = 'undefined') {
+               //     throw new Error("Ошибка");
+               // }
+               let i = 1;
+               while (a) {
+                   i *= a--;
                 }
                 return i;
             }
