@@ -1,53 +1,71 @@
-try {
-    const OPERATORS = {
-        '+': {
 
-            precedence: 1,
-            operation: (a, b) => a + b,
-        },
-        '-': {
+const OPERATORS = {
+    '+': {
 
-            precedence: 1,
-            operation: (a, b) => a - b,
-        },
-        '*':
-        {
+        precedence: 1,
+        operation: (a, b) => a + b,
+    },
+    '-': {
 
-            precedence: 2,
-            operation: (a, b) => a * b,
-        },
-        '/':
-        {
-            precedence: 2,
-            operation: (a, b) => {
-                if (b === 0) {
-                    throw new Error("Деление на ноль не допускается");
-                }
+        precedence: 1,
+        operation: (a, b) => a - b,
+    },
+    '*':
+    {
 
-                return a / b;
+        precedence: 2,
+        operation: (a, b) => a * b,
+    },
+    '/':
+    {
+        precedence: 2,
+        operation: (a, b) => {
+            try{
+            if (b === 0) {
+                throw new Error("Деление на ноль не допускается");
+            }
 
-            },
+            return a / b;
+        }
+        catch(e){
+            console.log('Произошла ошибка:');
+            console.log('Сообщение:', e.message);
+        }
         },
-        '%':
-        {
+    },
+    '%':
+    {
 
-            precedence: 2,
-            operation: (a, b) => a * b / 100, // процент от числа вроде бы, я хз как по другому )
-        },
-        '^':
-        {
-            precedence: 3,
-            operation: (a, b) => Math.pow(a, b),
-        },
-        '√':
-        {
-            precedence: 3,
-            operation: (a) => Math.sqrt(a),
-        },
-        '!':
-        {
-            precedence: 2,
-            operation: (a) => {
+        precedence: 2,
+        operation: (a, b) => a * b / 100, // процент от числа вроде бы, я хз как по другому )
+    },
+    '^':
+    {
+        precedence: 3,
+        operation: (a, b) => Math.pow(a, b),
+    },
+    '√':
+    {
+        precedence: 3,
+        operation: (a) => {
+            try {
+                Math.sqrt(a)
+            }
+            catch (e){
+                console.log('Произошла ошибка:');
+                console.log('Сообщение:', e.message);
+            }
+        }
+
+
+    },
+    '!':
+    {
+        precedence: 2,
+        operation: (a) => {
+            try {
+
+
                 if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
@@ -65,16 +83,19 @@ try {
                     i *= a--;
                 }
                 return i;
-
             }
-        },
+            catch (e) {
+                console.log('Произошла ошибка:');
+                console.log('Сообщение:', e.message);
+            }
+        }
+    }
+};
 
-    };
 
-}
-catch (e) {
-    console.log('Произошла ошибка:');
-    console.log('Сообщение:', e.message);
-    console.log('Имя ошибки:', e.name);
-    console.log('Стек вызовов:', e.stack);
-}
+// catch (e) {
+//     console.log('Произошла ошибка:');
+//     console.log('Сообщение:', e.message);
+//     console.log('Имя ошибки:', e.name);
+//     console.log('Стек вызовов:', e.stack);
+// }
