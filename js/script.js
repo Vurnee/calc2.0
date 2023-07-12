@@ -65,5 +65,8 @@ try {
 
 }
 catch (e) {
-    console.error(e);
-}
+    console.log('Произошла ошибка:');
+    console.log('Сообщение:', e.message);
+    console.log('Имя ошибки:', e.name);
+    console.log('Стек вызовов:', e.stack);
+  }
