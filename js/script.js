@@ -19,11 +19,14 @@ try {
         '/':
         {
             precedence: 2,
-            operation: (a, b) => {if(b===0){
-                throw new Error("Деление на ноль не допускается");
-            }
-            else{ a / b;}
-        },
+            operation: (a, b) => {
+                if (b === 0) {
+                    throw new Error("Деление на ноль не допускается");
+                }
+                else {
+                    a / b;
+                }
+            },
         },
         '%':
         {
@@ -44,12 +47,19 @@ try {
         '!':
         {
             precedence: 2,
-            operation: (a) => a === 0 ? 1 : a * OPERATORS['!'].operation(a - 1)
+            operation: (a) => {
+                if (a < 1) {
+                    throw new Error("Значения меньше единицы не допускаются");
+                }
+                else {
+                    a === 0 ? 1 : a * OPERATORS['!'].operation(a - 1)
+                }
+            }
         },
 
     };
 
 }
-catch(e){
+catch (e) {
     console.error(e);
 }
