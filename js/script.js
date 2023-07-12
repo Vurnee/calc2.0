@@ -65,9 +65,7 @@ try {
                     i*=a--;
                 }
                 return i;
-                // a * OPERATORS['!'].operation(a - 1);
-
-
+                
             }
         },
 
