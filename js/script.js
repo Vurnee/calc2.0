@@ -57,6 +57,9 @@ try {
                 else if (a > 170) {
                     throw new Error("Значения больше 170 не допускается");
                 }
+                // else if (a = 'undefined') {
+                //     throw new Error("Ошибка");
+                // }
                 let i = 1;
                 while (a) {
                     i *= a--;
