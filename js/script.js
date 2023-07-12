@@ -49,7 +49,10 @@ const OPERATORS = {
         precedence: 3,
         operation: (a) => {
             try {
-                Math.sqrt(a)
+                if(a<0){
+                    throw new Error("Значения меньше нуля не допускаются");
+                }
+                return Math.sqrt(a);
             }
             catch (e){
                 console.log('Произошла ошибка:');
@@ -64,9 +67,10 @@ const OPERATORS = {
         precedence: 2,
         operation: (a) => {
             try {
-
-
-                if (Number.isInteger(a)) {
+                if (a === undefined) {
+                 throw new Error("Значение не может быть undefined");
+             }
+                else if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
                 else if (a < 0) {
@@ -75,9 +79,6 @@ const OPERATORS = {
                else if (a > 170) {
                    throw new Error("Значения больше 170 не допускается");
                }
-               // else if (a = 'undefined') {
-               //     throw new Error("Ошибка");
-               // }
                let i = 1;
                while (a) {
                    i *= a--;
