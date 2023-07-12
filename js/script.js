@@ -48,14 +48,21 @@ try {
         {
             precedence: 2,
             operation: (a) => {
-                if (a === 0) {
+                if (Number.isInteger(a)) {
+                    throw new Error("Значение должно быть целым");
+                }
+                else if (a === 0) {
                     return 1;
                 }
                 else if (a < 0) {
                     throw new Error("Значения меньше нуля не допускаются");
                 }
-
-                return a * OPERATORS['!'].operation(a - 1);
+                let i = 1;
+                while(a){
+                    i*=a--;
+                }
+                return i;
+                // a * OPERATORS['!'].operation(a - 1);
 
 
             }
@@ -69,4 +76,4 @@ catch (e) {
     console.log('Сообщение:', e.message);
     console.log('Имя ошибки:', e.name);
     console.log('Стек вызовов:', e.stack);
-  }
+}
