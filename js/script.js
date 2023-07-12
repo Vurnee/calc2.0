@@ -23,9 +23,9 @@ try {
                 if (b === 0) {
                     throw new Error("Деление на ноль не допускается");
                 }
-                
-                   return a / b;
-                
+
+                return a / b;
+
             },
         },
         '%':
@@ -48,12 +48,16 @@ try {
         {
             precedence: 2,
             operation: (a) => {
-                if (a < 1) {
-                    throw new Error("Значения меньше единицы не допускаются");
+                if (a === 0) {
+                    return 1;
                 }
-                
-                  return  a === 0 ? 1 : a * OPERATORS['!'].operation(a - 1);
-                
+                else if (a < 0) {
+                    throw new Error("Значения меньше нуля не допускаются");
+                }
+
+                return a * OPERATORS['!'].operation(a - 1);
+
+
             }
         },
 
