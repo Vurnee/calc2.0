@@ -51,21 +51,18 @@ try {
                 if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
-                else if (a === 0) {
-                    return 1;
-                }
                 else if (a < 0) {
                     throw new Error("Значения меньше нуля не допускаются");
                 }
-                else if(a>170){
+                else if (a > 170) {
                     throw new Error("Значения больше 170 не допускается");
                 }
                 let i = 1;
-                while(a){
-                    i*=a--;
+                while (a) {
+                    i *= a--;
                 }
                 return i;
-                
+
             }
         },
 
