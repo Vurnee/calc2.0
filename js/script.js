@@ -23,9 +23,9 @@ try {
                 if (b === 0) {
                     throw new Error("Деление на ноль не допускается");
                 }
-                else {
-                    a / b;
-                }
+                
+                   return a / b;
+                
             },
         },
         '%':
@@ -42,7 +42,7 @@ try {
         '√':
         {
             precedence: 3,
-            operation: (a) => Math.sqrt(a, 0.5),
+            operation: (a) => Math.sqrt(a),
         },
         '!':
         {
@@ -51,9 +51,9 @@ try {
                 if (a < 1) {
                     throw new Error("Значения меньше единицы не допускаются");
                 }
-                else {
-                    a === 0 ? 1 : a * OPERATORS['!'].operation(a - 1)
-                }
+                
+                  return  a === 0 ? 1 : a * OPERATORS['!'].operation(a - 1);
+                
             }
         },
 
