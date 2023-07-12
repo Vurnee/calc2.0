@@ -54,16 +54,15 @@ try {
                 else if (a === 0) {
                     return 1;
                 }
-                else if (a < 0) {
-                    throw new Error("Значения меньше нуля не допускаются");
+                else if(a>170){
+                    throw new Error("Значения больше 170 не допускается");
                 }
                 let i = 1;
                 while(a){
                     i*=a--;
                 }
                 return i;
-                // a * OPERATORS['!'].operation(a - 1);
-
+                
 
             }
         },
