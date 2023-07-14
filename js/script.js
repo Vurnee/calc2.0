@@ -73,7 +73,7 @@ const OPERATORS = {
                 else if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
-                else if (a < 0) {
+                else if (a <= 0) {
                     throw new Error("Значения меньше нуля не допускаются");
                }
                else if (a > 170) {
