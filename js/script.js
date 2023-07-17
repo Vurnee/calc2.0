@@ -104,4 +104,3 @@ if (OPERATORS.hasOwnProperty(operator)) {  // используется для п
 } else {
     console.log("Некорректный оператор.");
 }
-
