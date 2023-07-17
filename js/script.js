@@ -20,17 +20,17 @@ const OPERATORS = {
     {
         precedence: 2,
         operation: (a, b) => {
-            try{
-            if (b === 0) {
-                throw new Error("Деление на ноль не допускается");
-            }
+            try {
+                if (b === 0) {
+                    throw new Error("Деление на ноль не допускается");
+                }
 
-            return a / b;
-        }
-        catch(e){
-            console.log('Произошла ошибка:');
-            console.log('Сообщение:', e.message);
-        }
+                return a / b;
+            }
+            catch (e) {
+                console.log('Произошла ошибка:');
+                console.log('Сообщение:', e.message);
+            }
         },
     },
     '%':
@@ -49,12 +49,12 @@ const OPERATORS = {
         precedence: 3,
         operation: (a) => {
             try {
-                if(a<0){
+                if (a < 0) {
                     throw new Error("Значения меньше нуля не допускаются");
                 }
                 return Math.sqrt(a);
             }
-            catch (e){
+            catch (e) {
                 console.log('Произошла ошибка:');
                 console.log('Сообщение:', e.message);
             }
@@ -68,20 +68,23 @@ const OPERATORS = {
         operation: (a) => {
             try {
                 if (a === undefined) {
-                 throw new Error("Значение не может быть undefined");
-             }
+                    throw new Error("Значение не может быть undefined");
+                }
                 else if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
+                else if(a===false){
+                    throw new Error("Ошибка,задайте число")
+                }
                 else if (a <= 0) {
                     throw new Error("Значения меньше нуля не допускаются");
-               }
-               else if (a > 170) {
-                   throw new Error("Значения больше 170 не допускается");
-               }
-               let i = 1;
-               while (a) {
-                   i *= a--;
+                }
+                else if (a > 170) {
+                    throw new Error("Значения больше 170 не допускается");
+                }
+                let i = 1;
+                while (a) {
+                    i *= a--;
                 }
                 return i;
             }
@@ -94,9 +97,3 @@ const OPERATORS = {
 };
 
 
-// catch (e) {
-//     console.log('Произошла ошибка:');
-//     console.log('Сообщение:', e.message);
-//     console.log('Имя ошибки:', e.name);
-//     console.log('Стек вызовов:', e.stack);
-// }
