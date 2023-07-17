@@ -1,3 +1,4 @@
+
 const OPERATORS = {
     '+': {
 
@@ -48,8 +49,8 @@ const OPERATORS = {
         precedence: 3,
         operation: (a) => {
             try {
-                if (a < 0) {
-                    throw new Error("Значения меньше нуля не допускаются");
+                if (a <= 0) {
+                    throw new Error("Значения меньше единицы не допускаются");
                 }
                 return Math.sqrt(a);
             }
@@ -64,14 +65,16 @@ const OPERATORS = {
     '!':
     {
         precedence: 2,
+
         operation: (a) => {
+
             try {
-                 if (a === undefined) {
+                if (a === undefined) {
                     throw new Error("Значение не может быть undefined");
                 }
                 else if (!Number.isInteger(a)) {  // 
-                   throw new Error("Значение должно быть целым");
-               }
+                    throw new Error("Значение должно быть целым");
+                }
                 else if (a <= 0) {
                     throw new Error("Значения меньше нуля не допускаются");
                 }
@@ -88,11 +91,14 @@ const OPERATORS = {
                 console.log('Произошла ошибка:');
                 console.log('Сообщение:', e.message);
             }
-            
-            
+
+
         }
     }
 };
+const a = 1000;
+const b = 20;
+console.log(OPERATORS['%'].operation(a, b));
 
 
 
