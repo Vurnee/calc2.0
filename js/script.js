@@ -72,9 +72,6 @@ const OPERATORS = {
                 else if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
-                else if (a === false) {
-                    throw new Error("Ошибка,задайте число")
-                }
                 else if (a <= 0) {
                     throw new Error("Значения меньше нуля не допускаются");
                 }
