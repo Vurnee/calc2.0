@@ -72,7 +72,7 @@ const OPERATORS = {
                 else if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
                 }
-                else if(a===false){
+                else if (a === false) {
                     throw new Error("Ошибка,задайте число")
                 }
                 else if (a <= 0) {
@@ -91,7 +91,7 @@ const OPERATORS = {
                 console.log('Произошла ошибка:');
                 console.log('Сообщение:', e.message);
             }
-            
+
         }
     }
 };
