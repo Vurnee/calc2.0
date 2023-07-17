@@ -1,4 +1,3 @@
-
 const OPERATORS = {
     '+': {
 
@@ -92,6 +91,7 @@ const OPERATORS = {
                 console.log('Произошла ошибка:');
                 console.log('Сообщение:', e.message);
             }
+            alert(a);
         }
     }
 };
