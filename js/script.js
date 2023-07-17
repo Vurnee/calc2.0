@@ -69,10 +69,8 @@ const OPERATORS = {
         operation: (a) => {
 
             try {
-                if (a === undefined) {
-                    throw new Error("Значение не может быть undefined");
-                }
-                else if (!Number.isInteger(a)) {  // 
+
+                if (!Number.isInteger(a)) {  // 
                     throw new Error("Значение должно быть целым");
                 }
                 else if (a <= 0) {
@@ -96,9 +94,14 @@ const OPERATORS = {
         }
     }
 };
-const a = 1000;
-const b = 20;
-console.log(OPERATORS['%'].operation(a, b));
+const a = parseFloat(prompt("Введите первое число"))
+const operator = prompt("Введите оператор: ");
+const b = parseFloat(prompt("Введите второе число"))
 
-
+if (OPERATORS.hasOwnProperty(operator)) {  // используется для проверки того, имеет ли объект указанное свойство как собственное свойство. Это полезно для проверки того, унаследовал ли объект свойство, а не является ли он своим.
+    const result = OPERATORS[operator].operation(a, b);
+    console.log("Результат:", result);
+} else {
+    console.log("Некорректный оператор.");
+}
 
