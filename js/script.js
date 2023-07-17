@@ -66,11 +66,11 @@ const OPERATORS = {
         precedence: 2,
         operation: (a) => {
             try {
-                if (a === undefined) {
-                    throw new Error("Значение не может быть undefined");
-                }
-                else if (Number.isInteger(a)) {
+                 if (Number.isInteger(a)) {
                     throw new Error("Значение должно быть целым");
+                }
+                else if (a === undefined) {
+                    throw new Error("Значение не может быть undefined");
                 }
                 else if (a <= 0) {
                     throw new Error("Значения меньше нуля не допускаются");
