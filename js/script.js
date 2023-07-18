@@ -1,4 +1,3 @@
-
 const OPERATORS = {
     '+': {
 
@@ -69,7 +68,6 @@ const OPERATORS = {
         operation: (a) => {
 
             try {
-
                 if (!Number.isInteger(a)) {  // 
                     throw new Error("Значение должно быть целым");
                 }
@@ -103,4 +101,27 @@ if (OPERATORS.hasOwnProperty(operator)) {  // используется для п
     console.log("Результат:", result);
 } else {
     console.log("Некорректный оператор.");
+}
+function parse(f) {
+    let result = [];
+    let number = '';
+    for (let i = 0; i < f.length; i++) {
+        let znach = f[i];
+        if (znach >= '0' && znach <= '9' || znach === '.') {
+            number = +znach;
+        }
+        else if (znach === '+' || znach === '-' || znach === '*' || znach === '/' || znach === '^' || znach === '√' || znach === '!') {
+            if (number !== '') {
+                result.push(parseFloat(number));
+                number = '';
+            }
+            result.push(char);
+        }
+    }
+
+    if (number !== '') {
+        result.push(parseFloat(number));
+    }
+
+    return result;
 }
