@@ -94,9 +94,9 @@ const OPERATORS = {
         }
     }
 };
-const a = parseFloat(prompt("Введите первое число"))
+const a = parseFloat(prompt("Введите первое число"));
 const operator = prompt("Введите оператор: ");
-const b = parseFloat(prompt("Введите второе число"))
+const b = parseFloat(prompt("Введите второе число"));
 
 if (OPERATORS.hasOwnProperty(operator)) {  // используется для проверки того, имеет ли объект указанное свойство как собственное свойство. Это полезно для проверки того, унаследовал ли объект свойство, а не является ли он своим.
     const result = OPERATORS[operator].operation(a, b);
