@@ -115,7 +115,7 @@ function parse(f) {
                 result.push(parseFloat(number));
                 number = '';
             }
-            result.push(char);
+            result.push(znach);
         }
     }
 
@@ -125,3 +125,7 @@ function parse(f) {
 
     return result;
 }
+//const varagenie =;
+const vivod =parse(varagenie);
+console.log(vivod);
+
