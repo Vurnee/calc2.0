@@ -102,56 +102,47 @@
 // } else {
 //     console.log("Некорректный оператор.");
 // }
-// function parse(f) {
-//     let result = [];
-//     let number = '';
-//     for (let i = 0; i < f.length; i++) {
-//         let znach = f[i];
-//         if (znach >= '0' && znach <= '9' || znach === '.') {
-//             number = +znach;
-//         }
-//         else if (znach === '+' || znach === '-' || znach === '*' || znach === '/' || znach === '^' || znach === '√' || znach === '!') {
-//             if (number !== '') {
-//                 result.push(parseFloat(number));
-//                 number = '';
-//             }
-//             result.push(znach);
-//         }
-//     }
 
-//     if (number !== '') {
-//         result.push(parseFloat(number));
-//     }
 
-//     return result;
-// }
-// //const varagenie =;
-// const vivod =parse(varagenie);
-// console.log(vivod);
 function parse(f) {
   let result = [];
-
+  let number = '';
   
 
   for (let i = 0; i < f.length; i++) {
-    let char = f[i];
 
-    if (char >= '0' && char <= '9' || char === '.') {
-      result.push(`${char} - число  `)
+    if (f[i] >= '0' && f[i] <= '9') {
+     
+       number += f[i];
 
-    } else if (char === '+' || char === '-' || char === '*' || char === '/' || char === '^' || char === '%') {
-
-      result.push(`${char} - Символ  `);
-
-    } else if (char === '(' || char === ')') {
-
-      result.push(`${char} - Символ  `);
+      } else if (f[i] === '.') {
+        if (number !== '') {
+          number += f[i];
+        }
+      } else if (f[i] === '+' || f[i] === '-' || f[i] === '*' || f[i] === '/' || f[i] === '^' || f[i] === '%' ) {
+        result.push({ 'Символ': parseFloat(number), 'Тип': 'цифра' });
+        if (number !== '') {
+          number = '';
+        }
+        result.push({ 'Символ': f[i], 'Тип': 'Оператор' });
+      } else if (f[i] === '(' || f[i] === ')') {
+        if (number !== '') {
+          result.push(parseFloat(number));
+          number = '';
+        }
+        result.push({ 'Символ': f[i], 'Тип': 'Скобки' });
+      }
     }
+    
+  if (number !== '') {
+    result.push({ 'Символ': parseFloat(number), 'Тип': 'цифра' });
   }
 
   return result;
 }
 
-const expression = '3*(8/4)';
-const parsedExpression = parse(expression);
-console.log(parsedExpression);
+
+const primer = '5.5+55';
+const parsed = parse(primer);
+console.log(parsed);
+
