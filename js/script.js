@@ -107,42 +107,41 @@
 function parse(f) {
   let result = [];
   let number = '';
-  
 
   for (let i = 0; i < f.length; i++) {
 
     if (f[i] >= '0' && f[i] <= '9') {
      
-       number += f[i];
+      number += f[i];
 
-      } else if (f[i] === '.') {
-        if (number !== '') {
-          number += f[i];
-        }
-      } else if (f[i] === '+' || f[i] === '-' || f[i] === '*' || f[i] === '/' || f[i] === '^' || f[i] === '%' ) {
-        result.push({ 'Символ': parseFloat(number), 'Тип': 'цифра' });
-        if (number !== '') {
-          number = '';
-        }
-        result.push({ 'Символ': f[i], 'Тип': 'Оператор' });
-      } else if (f[i] === '(' || f[i] === ')') {
-        if (number !== '') {
-          result.push(parseFloat(number));
-          number = '';
-        }
-        result.push({ 'Символ': f[i], 'Тип': 'Скобки' });
-      }
-    }
-    
-  if (number !== '') {
-    result.push({ 'Символ': parseFloat(number), 'Тип': 'цифра' });
-  }
+     } else if (f[i] === '.') {
+       if (number !== '') {
+         number += f[i];
+       }
+     } else if (f[i] === '+' || f[i] === '-' || f[i] === '*' || f[i] === '/' || f[i] === '^' || f[i] === '%' ) {
+       result.push({ 'Символ': parseFloat(number), 'Тип': 'цифра' });
+       if (number !== '') {
+         number = '';
+       }
+       result.push({ 'Символ': f[i], 'Тип': 'Оператор' });
+     } else if (f[i] === '(' || f[i] === ')') {
+       if (number !== '') {
+         result.push(parseFloat(number));
+         number = '';
+       }
+       result.push({ 'Символ': f[i], 'Тип': 'Скобки' });
+     }
+   }
+   
+ if (number !== '') {
+   result.push({ 'Символ': parseFloat(number), 'Тип': 'цифра' });
+ }
 
-  return result;
+ return result;
 }
 
 
-const primer = '5.5+55';
+const primer = '158+536+5.5-564';
 const parsed = parse(primer);
 console.log(parsed);
 
